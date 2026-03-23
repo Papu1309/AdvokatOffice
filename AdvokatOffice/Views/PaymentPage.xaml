@@ -1,0 +1,56 @@
+﻿<Page x:Class="AdvokatOffice.Views.PaymentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Оплата услуги" Width="500" Height="650">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Border Style="{StaticResource Card}" Margin="20">
+                <StackPanel>
+                    <TextBlock Text="💳 Оплата услуги" Style="{StaticResource PageTitle}" FontSize="20"/>
+
+                    <Border Background="{StaticResource LightColor}" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="Услуга:" FontWeight="Bold"/>
+                            <TextBlock x:Name="txtServiceName" Margin="0,5,0,10" FontSize="14"/>
+                            <TextBlock Text="Стоимость:" FontWeight="Bold"/>
+                            <TextBlock x:Name="txtPrice" Margin="0,5,0,0" FontSize="18" Foreground="{StaticResource SuccessColor}" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="Способ оплаты" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="cmbPaymentMethod" SelectedIndex="0" SelectionChanged="PaymentMethod_Changed">
+                        <ComboBoxItem Content="💵 Наличные" Tag="Cash"/>
+                        <ComboBoxItem Content="💳 Банковская карта" Tag="Card"/>
+                    </ComboBox>
+
+                    <StackPanel x:Name="cardPanel" Visibility="Collapsed" Margin="0,15,0,0">
+                        <TextBlock Text="💳 Данные карты" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <TextBlock Text="Номер карты" Margin="0,0,0,5"/>
+                        <TextBox x:Name="txtCardNumber" MaxLength="19"/>
+                        <TextBlock Text="Пример: 1234 5678 9012 3456" FontSize="11" Foreground="Gray" Margin="0,-5,0,5"/>
+
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Margin="0,0,5,0">
+                                <TextBlock Text="Срок (ММ/ГГ)"/>
+                                <TextBox x:Name="txtExpiry"/>
+                                <TextBlock Text="Пример: 12/25" FontSize="11" Foreground="Gray" Margin="0,-5,0,0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                                <TextBlock Text="CVC"/>
+                                <TextBox x:Name="txtCvc" MaxLength="3"/>
+                                <TextBlock Text="3 цифры на обороте" FontSize="11" Foreground="Gray" Margin="0,-5,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+
+                    <Button Content="✅ Оплатить" Click="Pay_Click" Height="45" Margin="0,20,0,10" Style="{StaticResource SuccessButton}"/>
+                    <Button Content="◀ Назад" Click="Back_Click" Height="40" Background="#95A5A6" Foreground="White"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Page>

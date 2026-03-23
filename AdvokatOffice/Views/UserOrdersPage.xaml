@@ -1,0 +1,29 @@
+﻿<Page x:Class="AdvokatOffice.Views.UserOrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Мои заказы" Width="1100" Height="600">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="📦 История моих заказов" Style="{StaticResource PageTitle}" FontSize="20"/>
+
+        <DataGrid x:Name="dgOrders" Grid.Row="1" Margin="0,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Услуга" Binding="{Binding Services.Name}" Width="200"/>
+                <DataGridTextColumn Header="Дата заказа" Binding="{Binding OrderDate, StringFormat=dd.MM.yyyy HH:mm}" Width="140"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding Services.Price, StringFormat=C}" Width="100"/>
+                <DataGridTextColumn Header="Способ оплаты" Binding="{Binding PaymentMethod}" Width="100"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="100"/>
+                <DataGridTextColumn Header="Адрес получения" Binding="{Binding PickupAddress}" Width="200"/>
+                <DataGridTextColumn Header="Время получения" Binding="{Binding PickupTime, StringFormat=dd.MM.yyyy HH:mm}" Width="140"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="2" Content="◀ На главную" Click="Back_Click" Width="120" Height="35" Margin="0,10" HorizontalAlignment="Center"/>
+    </Grid>
+</Page>
